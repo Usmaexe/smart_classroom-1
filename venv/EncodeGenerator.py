@@ -5,8 +5,7 @@ import os
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
-from firebase_admin import  storage
-from google.cloud import storage
+from firebase_admin import storage
 
 data = os.path.abspath(os.path.dirname(__file__)) + "/smarttttt-94151-firebase-adminsdk-v5sfa-9fbface78c.json"
 cred = credentials.Certificate(data)
@@ -26,21 +25,21 @@ studentIds = []
 for path in pathList:
     imgList.append(cv2.imread(os.path.join(folderPath, path)))
     studentIds.append(os.path.splitext(path)[0])
-    ''''
+    
     fileName = f'{folderPath}/{path}'
     bucket = storage.bucket()
-    blob = bucket.blob(fileName)
-    blob.upload_from_filename(fileName)
-    '''''
+    #blob = bucket.blob(fileName)
+    # xblob.upload_from_filename(fileName)
+    
 
-
+'''
 bucket_name='smarttttt-94151'
-source_file_name='images'
+source_file_name='Images'
 destination_blob_name='test/hello.txt'
 
 def upload_blob(bucket_name, source_file_name, destination_blob_name):
     """Uploads a file to the bucket."""
-    client = storage.Client.from_service_account_json('/smarttttt-94151-firebase-adminsdk-v5sfa-9fbface78c.json')
+    client = storage.Client.from_service_account_json("venv/smarttttt-94151-firebase-adminsdk-v5sfa-9fbface78c.json")
     bucket = client.get_bucket(bucket_name)
     blob = bucket.blob(destination_blob_name)
     blob.upload_from_filename(source_file_name) 
@@ -48,13 +47,12 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
     print('File {} uploaded to {}.'.format(
         source_file_name,
         destination_blob_name))
-
+'''
 if __name__ == '__main__':
-        upload_blob(bucket_name, source_file_name, destination_blob_name)
 
     # print(path)
     # print(os.path.splitext(path)[0])
-print(studentIds)
+    print(studentIds)
 
 
 def findEncodings(imagesList):
